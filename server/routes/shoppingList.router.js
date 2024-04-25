@@ -18,7 +18,24 @@ router.get('/', (req,res) => {
 
 })
 
+// POST '/api/shoppingList'
+router.post('/', (req, res) => {
+    //! CIRCLE BACK TO THIS TO CONFIRM
+    const sqlText = `
+        INSERT INTO "shoppingList" ("item", "quantity", "unit", "buy")
+            VALUES ($1, $2, $3, $4);
+    `
+    const sqlValues = [req.body.item, req.body.quantity, req.body.unit, req.body.buy]
 
+    pool.query(sqlText, sqlValues)
+    .then((dbRes) => {
+      res.sendStatus(201)
+    })
+    .catch((dbErr) => {
+      console.log('POST /api/students error:', dbErr)
+      res.sendStatus(500)
+    })
+})
 
 
 
