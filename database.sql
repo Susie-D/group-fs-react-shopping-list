@@ -1,10 +1,10 @@
 CREATE TABLE "shoppingList" (
 	"id" SERIAL PRIMARY KEY,
 	"item" VARCHAR(100),
-	"quanity" INT,
+	"quantity" INT,
 	"unit" VARCHAR(10),
 	"buy" BOOLEAN DEFAULT FALSE);
-Insert into "shoppingList" (item, quanity, unit, buy) 
+Insert into "shoppingList" (item, quantity, unit, buy) 
 VALUES
 ('Apple', 5, 'lbs', FALSE),
 ('Bread', 1, 'Loaf', FALSE),
