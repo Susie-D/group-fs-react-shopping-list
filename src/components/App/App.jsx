@@ -3,6 +3,7 @@ import Header from "../Header/Header.jsx";
 import "./App.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import ShoppingList from "../ShoppingList/ShoppingList.jsx";
 
 function App() {
   const [shoppingList, setShoppingList] = useState([]);
@@ -68,15 +69,7 @@ function App() {
           ></input>
           <button type="submit">Add Item</button>
         </form>
-        <ul>
-          {shoppingList.map((item) => {
-            return (
-              <li key={item.id}>
-                {item.item} {item.quantity} {item.unit}
-              </li>
-            );
-          })}
-        </ul>
+        <ShoppingList shoppingList={shoppingList} />
       </main>
     </div>
   );
