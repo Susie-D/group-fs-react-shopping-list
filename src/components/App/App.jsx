@@ -34,7 +34,13 @@ function App() {
       <Header />
       <main>
         <ShoppingListForm fetchShoppingList={fetchShoppingList} />
-        <ShoppingList shoppingList={shoppingList} />
+        <h2>Shopping List</h2>
+        <div>
+          <ShoppingList
+            fetchShoppingList={fetchShoppingList}
+            shoppingList={shoppingList}
+          />
+        </div>
       </main>
     </div>
   );

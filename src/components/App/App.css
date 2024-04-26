@@ -2,3 +2,19 @@ main {
   width: 90%;
   margin: auto;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  width: 50%;
+  margin: 1em;
+  height: 2em;
+}
+
+button {
+  width: 5em;
+  margin: 1em;
+}
