@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 
-function ShoppingListForm() {
+function ShoppingListForm({ fetchShoppingList }) {
   const [shoppingFormItem, setShoppingFormItem] = useState('');
   const [shoppingFormQuantity, setShoppingFormQuantity] = useState('');
   const [shoppingFormUnit, setShoppingFormUnit] = useState('');
