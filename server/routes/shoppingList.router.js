@@ -20,7 +20,6 @@ router.get('/', (req,res) => {
 
 // POST '/api/shoppingList'
 router.post('/', (req, res) => {
-    //! CIRCLE BACK TO THIS TO CONFIRM
     const sqlText = `
         INSERT INTO "shoppingList" ("item", "quantity", "unit", "buy")
             VALUES ($1, $2, $3, $4);

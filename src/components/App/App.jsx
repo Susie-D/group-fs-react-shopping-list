@@ -6,10 +6,11 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [shoppingList, setShoppingList] = useState([]);
-  let [shoppingFormItem, setShoppingFormItem] = useState("Mahad");
-  // let[shoppingFormQuantity, setShoppingFormQuantity] = useState("");
-  // let[shoppingFormUnit, setShoppingFormUnit] = useState("");
-  // let[shoppingFormBuy, setShoppingFormBuy] = useState("");
+
+  let [shoppingFormItem, setShoppingFormItem] = useState("");
+  let[shoppingFormQuantity, setShoppingFormQuantity] = useState("");
+  let[shoppingFormUnit, setShoppingFormUnit] = useState("");
+  // let[shoppingFormBuy, setShoppingFormBuy] = useState(""); //! un-used so far
 
   // useEffect runs after page renders, then calls function/ReactHook
   // shoppingList houses default values, in order to update the state we need setShoppingList (useState functionality)
@@ -34,9 +35,11 @@ function App() {
 
   const addItem = () => {
     axios
-      .post("/api/shoppingList", { item: shoppingFormItem })
+      .post("/api/shoppingList", { item: shoppingFormItem, quantity: shoppingFormQuantity, unit: shoppingFormUnit})
       .then((response) => {
         setShoppingFormItem("");
+        setShoppingFormQuantity("");
+        setShoppingFormUnit("");
         fetchShoppingList();
       })
       .catch((err) => {
@@ -47,11 +50,10 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    //! We need to add more input variables below
-    if (shoppingFormItem) {
+    if (shoppingFormItem, shoppingFormQuantity, shoppingFormUnit) {
       addItem();
     } else {
-      alert("We Need an Item");
+      alert("We need all inputs filled out");
     }
   };
 
@@ -65,6 +67,18 @@ function App() {
             placeholder="Item"
             value={shoppingFormItem}
             onChange={(evt) => setShoppingFormItem(evt.target.value)}
+          ></input>
+          <input
+            type="text"
+            placeholder="Quantity"
+            value={shoppingFormQuantity}
+            onChange={(evt) => setShoppingFormQuantity(evt.target.value)}
+          ></input>
+          <input
+            type="text"
+            placeholder="Unit"
+            value={shoppingFormUnit}
+            onChange={(evt) => setShoppingFormUnit(evt.target.value)}
           ></input>
           <button type="submit">Add Item</button>
         </form>
